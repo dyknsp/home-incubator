@@ -1,23 +1,31 @@
-id: scene.gostinaia
-  name: Пылесос
-  description: Включить пылесос
+ id: 1
+  name: Vacum cleaner
+  description: Vacum cleaner
   room: Гостиная
   type: devices.types.vacuum_cleaner
   custom_data:
   capabilities:
-  - type: devices.types.vacuum_cleaner
-    retrievable: false
+  - type: devices.capabilities.on_off
+    retrievable: true
     parameters:
     hooks:
       on:
-        url: http://myhome58.no-ip.org/api/services/script.227845dfdf069a885f6d33350aa254a8
+        url: http://myhome58.no-ip.org/api/services/vacuum/start
         method: POST
         json:
-          device_id: 1039592527
+          state: "on"
         headers:
           Authorization: Bearer {long-living-token}
           Content-Type: application/json
-        device_info:
+      off:
+        url: http://myhome58.no-ip.org/api/services/vacuum/stop
+        method: POST
+        json:
+          state: "off"
+headers:
+          Authorization: Bearer {long-living-token}
+          Content-Type: application/json
+          device_info:
     manufactorer: HomeAssistant
     model: Virtual
     hw_version: 0.1
