@@ -1,4 +1,4 @@
-id: 1
+id: 
   name: Vacum cleaner
   description: Vacum cleaner
   room: Гостиная
@@ -10,7 +10,7 @@ id: 1
     parameters:
     hooks:
       on:
-        url: http://myhome58.no-ip.org/api/services/vacuum/start
+        url: http://myhome58.no-ip.org/api/services/vacuum/turn_on
         method: POST
         json:
           state: "on"
@@ -18,7 +18,7 @@ id: 1
           Authorization: Bearer {long-living-token}
           Content-Type: application/json
       off:
-        url: http://myhome58.no-ip.org/api/services/vacuum/stop
+        url: http://myhome58.no-ip.org/api/services/vacuum/turn_off
         method: POST
         json:
           state: "off"
