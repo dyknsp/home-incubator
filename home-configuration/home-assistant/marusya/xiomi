@@ -1,0 +1,32 @@
+id: 1
+  name: Vacum cleaner
+  description: Vacum cleaner
+  room: Гостиная
+  type: devices.types.vacuum_cleaner
+  custom_data:
+  capabilities:
+  - type: devices.capabilities.on_off
+    retrievable: true
+    parameters:
+    hooks:
+      on:
+        url: http://myhome58.no-ip.org/api/services/vacuum/start
+        method: POST
+        json:
+          state: "on"
+        headers:
+          Authorization: Bearer {long-living-token}
+          Content-Type: application/json
+      off:
+        url: http://myhome58.no-ip.org/api/services/vacuum/stop
+        method: POST
+        json:
+          state: "off"
+headers:
+          Authorization: Bearer {long-living-token}
+          Content-Type: application/json
+          device_info:
+    manufactorer: HomeAssistant
+    model: Virtual
+    hw_version: 0.1
+    sw_version: 0.1
